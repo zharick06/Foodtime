@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+django_heroku.settings(locals())
 
 
 # Quick-start development settings - unsuitable for production
@@ -87,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'FOOD_TIME',
         'USER': 'postgres',
-        'PASSWORD': 'zharick0206',
+        'PASSWORD': 'FOODTIME123',
         'HOST': 'localhost',
         'DATABASE_PORT': '5432'
     }
@@ -149,3 +152,6 @@ import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+SECRET_KEY = os.environ.get('SECRET_KEY')

@@ -4,3 +4,5 @@ pillow
 humanize
 django-tailwind
 django-bootstrap-v5
+gunicorn
+django-heroku
