@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+
+{% for p in datosR %}
+<div class="flex justify-center items-center gap-8 mt-12">
+    <div class="text-center">
+        {% if p.logo %}
+        <img src="{{ p.logo.url }}" class="rounded-full w-96 mb-4 mx-auto" alt="Avatar" />
+        {% endif %}
+    </div>
+    <div class="border-solid border-2 w-full flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+        <div class="p-9 flex flex-col justify-start">
+            <h5 class="text-gray-900 text-xl font-medium mb-2">{{ p.nombre }}</h5>
+            <p class="text-gray-700 text-base mb-4">
+                Celular: {{ p.celular }}
+            </p>
+            <p class="text-gray-700 text-base mb-4">
+                Telefono: {{ p.telefono }}
+            </p>
+            <p class="text-gray-700 text-base mb-4">
+                Correo: {{ p.correo }}
+            </p>
+            <p class="text-gray-700 text-base mb-4">
+                Dirección: {{ p.direccion }}
+            </p>
+            <p class="text-gray-700 text-base mb-4">
+                Departamento: Quindio
+            </p>
+            <p class="text-gray-700 text-base mb-4">
+                Municipio: {{ p.municipio }}
+            </p>
+            <p class="text-gray-600 text-xs">Last updated 3 mins ago</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

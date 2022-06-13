@@ -1,0 +1,167 @@
+{% load static %}
+{% block css %}
+<style>
+    body{
+        background: #333333;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #dd1818, #666666);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #831f1f, #999292); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+</style>
+{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro restaurante</title>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-mono bg-gray-400">
+    
+    <!-- Container -->
+    <div class="container mx-auto">
+        <div class="flex justify-center px-6 my-32">
+            <div class="gap-4 m-3.5 flex fixed top-0 right-0">
+                <a href="{% url 'login' %}"
+              class="p-2 lg:px-4 md:mx-2 text-red-900 bg-white rounded text-center hover:bg-red-800 hover:border-solid hover:border-2 hover:border-white hover:text-white transition-colors text-lg duration-300 border-hidden">Login</a>
+                <a href="{% url 'inicio' %}"><img class="w-10" src="{% static 'img/Logos/home-page1.png' %}" alt=""></a>
+            </div>
+            <!-- Row -->
+            <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+                <!-- Col -->
+                <div
+                    class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+                    style="background-image: url('img/rrr.png')"
+                ></div>
+                <!-- Col -->
+                <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+                    <h3 class="pt-4 text-2xl text-center">Registro Restaurante!</h3>
+                    <form action="" method="POST" enctype="multipart/form-data" class="px-8 pt-6 pb-8 mb-2 bg-white rounded"> {% csrf_token %}
+                        <div class="md:flex justify-between">
+                            <div class="md:mr-12 md:mb-0">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="Nombre">
+                                    Nit
+                                </label>
+                                <input
+                                    id="id_nit"
+                                    name="nit"
+                                    class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    type="text"
+                                    placeholder="Nit"
+                                />
+                            </div>
+                            <div class="md:ml-2">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="Apellido">
+                                    Nombre
+                                </label>
+                                <input
+                                    id="id_nombre"
+                                    name="nombre"
+                                    class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    type="text"
+                                    placeholder="Nombre"
+                                />
+                            </div>
+                        </div>
+                        <div class="md:flex justify-between">
+                            <div class="md:mr-12 md:mb-0">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="Municipio">
+                                    Municipio
+                                </label>
+                                <select name="municipio" id="id_municipio" class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
+                                    <option value="" selected="" class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">Municipio</option>
+                                    {% for m in municipios %}
+                                    <option value="{{ m.id }}" class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">{{ m.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="md:ml-2">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="genero">
+                                    Direccion
+                                </label>
+                                <input
+                                    id="id_direccion"
+                                    name="direccion"
+                                    class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    type="text"
+                                    placeholder="Genero"
+                                />
+                            </div>
+                        </div>
+                        <div class="">
+                            <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
+                                Correo
+                            </label>
+                            <input
+                                id="id_correo"
+                                name="correo"
+                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                type="email"
+                                placeholder="Correo"
+                            />
+                        </div>
+
+                        
+                        <div class=" md:flex justify-between">
+                            <div class=" md:mr-12 md:mb-0">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="Direccion">
+                                    Celular
+                                </label>
+                                <input
+                                    name="celular"
+                                    class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    type="text"
+                                    placeholder="Celular"
+                                />
+                            </div>
+                            <div class="md:ml-2">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="Telefono">
+                                    Telefono
+                                </label>
+                                <input
+                                    class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    type="text"
+                                    placeholder="Telefono"
+                                    name="telefono"
+                                />
+                            </div>
+                        </div>
+                        <div class="md:flex justify-between">
+                            <div class="mb-2 md:mr-12 md:mb-0">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="contraseña">
+                                    Contraseña
+                                </label>
+                                <input
+                                    id="id_contraseña"
+                                    name="contraseña"
+                                    class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    type="password"
+                                    placeholder="Contraseña"
+                                />
+                            </div>
+                            <div class="md:ml-2">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="contraseña">
+                                    Foto
+                                </label>
+                                <input 
+                                class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                type="file" name="logo" accept="image/*" id="id_logo" placeholder="Logo">
+                            </div>
+                        </div>
+                        <button id="id_btn" class="content-center shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                        Registrar
+                        </button>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

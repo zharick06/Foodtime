@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/cocina.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function finalizarPedido(id) {
+            Swal.fire({
+                "title": "¿Estas seguro?",
+                "icon": "question",
+                "showCancelButton": true,
+                "cancelButtonText": "No, Cancelar",
+                "confirmButtonText": "Si, Finalizar",
+                "reverseButtons": true,
+                "confirmButtonColor": "#dc3545"
+            })
+                .then(function (result) {
+                    if (result.isConfirmed) {
+                        window.location.href = "/finalizarPedido/" + id + "/"
+                    }
+                })
+        }
+    </script>
+    <script>
+        function cancelarPedido(id) {
+            Swal.fire({
+                "title": "¿Estas seguro?",
+                "icon": "question",
+                "showCancelButton": true,
+                "cancelButtonText": "No, Cancelar",
+                "confirmButtonText": "Si, Cancelar",
+                "reverseButtons": true,
+                "confirmButtonColor": "#dc3545"
+            })
+                .then(function (result) {
+                    if (result.isConfirmed) {
+                        window.location.href = "/cancelarPedido/" + id + "/"
+                    }
+                })
+        }
+    </script>
+
+    <section class="menu" id="menu">
+
+
+        <div class="swiper menu-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <h3 class="title">COCINA</h3>
+                    <div class="box-container flex flex-graw justify-between">
+                        {% for datos in datos %}
+                        <div class="bg-white flex flex-col justify-center items-center">
+                            <div class="box mb-">
+                                <div class="flex justify-center">
+                                    {% if datos.foto %}
+                                    <img class="w-26 h-24" src="{{ datos.foto.url }}" alt="" />
+                                    {% endif %}
+                                </div>
+                                <div class="flex justify-center">
+                                    <div class="p-6 flex flex-col justify-start">
+                                        <h2 class="text-3xl">{{ datos.nombre }}</h2>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center">
+                                    <div class="p-6 ">
+                                        <h2 class="text-3xl">Cantidad= {{ datos.cantidad }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#" id="btn" onclick="finalizarPedido({{ datos.id_detalle }})">
+                                    <button class="
+                                    mb-2
+                                    transition 
+                                    duration-500 
+                                    ease-in-out 
+                                    transition 
+                                    ease-in-out 
+                                    delay-150 
+                                    hover:-translate-y-1 
+                                    hover:scale-110 
+                                    hover:bg-red-800 
+                                    duration-300
+                                    bg-red-800 
+                                    text-white 
+                                    font-semibold 
+                                    py-2 px-2
+                                    rounded-md">
+                                    Finalizado
+                                    </button>
+                                </a>
+                                <a href="#" id="btn" onclick="cancelarPedido({{ datos.id_detalle }})">
+                                    <button class="
+                                    mb-2
+                                    transition 
+                                    duration-500 
+                                    ease-in-out 
+                                    transition 
+                                    ease-in-out 
+                                    delay-150 
+                                    hover:-translate-y-1 
+                                    hover:scale-110 
+                                    hover:bg-red-800 
+                                    duration-300
+                                    bg-red-800 
+                                    text-white 
+                                    font-semibold 
+                                    py-2 px-2
+                                    rounded-md">
+                                    Cancelar
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

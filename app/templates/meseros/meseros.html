@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block content %}
+<hr>
+<script>
+    function desactivarMesero(documento) {
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "text":"Esta accion no se puede revertir",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Desactivar",
+            "reverseButtons":true,
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result) {
+            if(result.isConfirmed) {
+                window.location.href = "/desactivar-mesero/"+documento+"/"
+            }
+        })
+    }
+</script>
+    <main class="m-12">
+        <div class="flex justify-end">
+            <a href="{% url 'activarMesero' %}">
+            <button class="
+                        flex
+                        justify-center
+                        items-center
+                        h-8
+                        w-40
+                        mb-2
+                        transition 
+                        duration-500 
+                        ease-in-out 
+                        
+                        transition 
+                        ease-in-out 
+                        delay-150 
+                        hover:-translate-y-1 
+                        hover:scale-110 
+                        hover:bg-red-800 
+                        duration-300
+                
+                        bg-red-800 
+                        text-white 
+                        font-semibold 
+                        py-2 px-2
+                        rounded-md
+                       
+                    ">
+              Añadir
+            </button>
+            </a>
+          </div>
+        
+        
+          <div class="flex flex-wrap flex-row gap-8 justify-center mt-12 p-4">
+            {% for m in meseros %}
+            <div class="flex justify-center border-solid rounded-lg border-2">
+              <div class="p-4 block rounded-lg shadow-lg bg-white max-w-sm text-center">
+                <div class="p-6">
+                  <div class="text-center m-6">
+                    {% if m.foto %}
+                    <img
+                      src="{{ m.foto.url }}"
+                      class="rounded-full w-40 mb-4 mx-auto"
+                      alt="Avatar"
+                    />
+                    {% endif %}
+                    <h5 class="text-xl font-medium leading-tight mb-2">{{ m.nombres }} {{ m.apellidos }}</h5>
+                  </div>
+                  <a href="#"  onclick="desactivarMesero({{ m.documento }})">
+                  <button type="button" class="w-full inline-block px-6 py-2.5 bg-red-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-800 hover:shadow-lg focus:bg-red-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Desactivar</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </main>
+{% endblock %}

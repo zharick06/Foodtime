@@ -1,0 +1,73 @@
+
+<script>
+  function enviar() {
+      let mesa = document.getElementById('id_mesa').value
+      if (mesa==="Mesa") {
+        window.location.href = "/menu-mesero/"
+      } else{
+        window.location.href = "/orden/"+mesa+"/"
+      }
+  }
+</script>
+
+<div class=" my-10 flex-left py-2 sm:max-w-xl sm:mx-auto max-w-md bg-white rounded-lg border shadow-md  dark:bg-white dark:border-red-900 hover:shadow-xl transition duration-300">
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select required name="id_mesa" id="id_mesa" class="form-select form-select-lg mb-3 appearance-none block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-red-800 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-red-800 focus:red-800" aria-label=".form-select-lg example">
+        <option selected disabled>Mesa</option>
+        {% for m in mesas %}
+        <option value="{{ m.id }}">{{ m.nombre }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="flow-root">
+    {% if request.session.carrito.items %}
+    {% for key, value in request.session.carrito.items %}
+    <div class="flow-root">
+      <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700 ">
+        <li class="py-5 sm:py-4">
+          <div class="flex items-center space-x-4">
+            
+            <div class="pl-2 flex-1">
+              <h1 class="text-3xl">
+                {{value.nombre}}
+              </h1>
+            </div>
+            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-black">
+              <div class="mx-2 flex gap-4">
+                <div>
+                  <label for="small-input" class="flex-1 block mb-2 text-sm font-medium text-black dark:text-black">Cantidad:</label>
+                  <input disabled type="number" class="cantidadInput block w-12 p-2 text-black border border-red-900 rounded-lg bg-red-900 sm:text-xs focus:red-800 focus:border-red-900 dark:bg-white dark:border-red-900 dark:placeholder-red-800 dark:text-black dark:focus:ring-red-800 dark:focus:border-red-900" value="{{value.cantidad}}">
+                </div> 
+                <div class="flex flex-col items-center justify-center">
+                  <a href="{% url 'Add' value.producto_id %}" class="text-2xl ">+</a>
+                  <a href="{% url 'Sub' value.producto_id %}" class="text-2xl ">-</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <hr class="border-solid border-1 border-red-900 bg-red-900">
+      
+    </div>
+    
+    {% endfor %}
+
+    <div class="flex justify-center items-center p-4">
+      <h2>TOTAL: ${{ total_carrito }}</h2>
+    </div>
+    <hr class="border-solid border-1 border-red-900 bg-red-900">
+    <div class="relative mt-2 flex justify-center">
+      <a href="{% url 'CLS' %}"><button class="flex p-2 lg:px-2 md:mx-2 text-gray-600 text-center border border-transparent rounded hover:bg-gray-500 hover:text-white transition-colors duration-300" style="border: solid 2px gray;">Limpiar</button></a>
+      <a href="#" onclick="enviar()"><button class="flex p-2 lg:px-2 md:mx-2 text-red-900 text-center border border-transparent rounded hover:bg-red-800 hover:text-white transition-colors duration-300" style="border: solid 2px #991b1b;">Enviar</button></a>
+    </div>
+    {% else %}
+    
+    <p>NO HAY</p>
+    {% endif %}
+    
+  </div>
+</div>
+

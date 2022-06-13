@@ -1,0 +1,81 @@
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/caja.css' %}">
+{% endblock %}
+{% block content %}
+<main>
+    <div class="cardCaja">
+        <div class="descripciones">
+            <img src="{% static 'img/Logos/Logo.png' %}" alt="">
+            <div class="info">
+                <div class="infito">
+                    <h3>Mesa</h3>
+                    <p>3</p>
+                </div>
+                <div class="infito">
+                    <div class="infito">
+                        <h3>Articulo</h3>
+                        <p>Limonada</p>
+                        <p>Cerezada</p>
+                    </div>
+                </div>
+                <div class="infito">
+                    <div class="infito">
+                        <h3>Unidad</h3>
+                        <p>1</p>
+                    </div>
+                </div>
+                <div class="infito">
+                    <div class="infito">
+                        <h3>Precio</h3>
+                        <p>8.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="total">
+            <div class="info_total">
+                <h2>TOTAL: 8.000</h2>
+            </div>
+            <a href="#">Imprimir</a>
+        </div>
+    </div>
+    <div class="cardCaja">
+        <div class="descripciones">
+            <img src="{% static 'img/Logos/Logo.png' %}" alt="">
+            <div class="info">
+                <div class="infito">
+                    <h3>Mesa</h3>
+                    <p>2</p>
+                </div>
+                <div class="infito">
+                    <div class="infito">
+                        <h3>Articulo</h3>
+                        <p>Camarones</p>
+                    </div>
+                </div>
+                <div class="infito">
+                    <div class="infito">
+                        <h3>Unidad</h3>
+                        <p>4</p>
+                    </div>
+                </div>
+                <div class="infito">
+                    <div class="infito">
+                        <h3>Precio</h3>
+                        <p>15.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="total">
+            <div class="info_total">
+                <h2>TOTAL: 60.000</h2>
+            </div>
+            <a href="#">Imprimir</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

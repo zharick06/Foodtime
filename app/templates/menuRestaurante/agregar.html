@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/agregarMenu.css' %}">
+{% endblock %}
+{% block content %}
+
+<section class="order" id="order">
+    <div class="flex justify-around py-10">
+        <div class="text-center text-5xl font-extrabold leading-none tracking-tight mb-12">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-900 to-red-700">
+            Agregar Menu
+            </span>
+        </div>
+    </div>
+  
+    <div class="row">
+          
+        <div class="image">
+            <img src="{% static 'img/Formularios/about-img.png' %}" alt="">
+        </div>
+  
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+            <div class="inputBox mb-2">
+                <input type="text" id="id_nombre" name="nombre" placeholder="Nombre Plato">
+            </div>
+            <div class="inputBox2 flex justify-between items-center">
+                <input type="number" id="id_valor" name="valor" placeholder="Valor">
+                
+                <select name="categoria" id="id_categorias" class="p-10 m-4  h-18 form-select appearance-none w-96 px-2 py-6  font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 " aria-label=".form-select-sm example">
+                    <option selected disabled>Categoria</option>
+                    {% for c in categorias %}
+                    <option value="{{ c.id }}">{{ c.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>       
+            <textarea placeholder="Descripcion" name="descripcion" id="id_descripcion" cols="30" rows="10"></textarea>
+            <div class="inputBox2 flex justify-between items-center">
+                <input type="file" value="Adjuntar Archivo" id="id_foto" name="foto">
+            </div> 
+            <input value="Agregar" class="shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+
+        </form>
+  
+    </div>  
+  
+</section>
+{% endblock %}

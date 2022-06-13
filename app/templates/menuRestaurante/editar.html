@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block js %}
+<script>
+    const id_categoria = document.getElementById('id_categoria');
+    id_categoria.setAttribute('class', 'p-10 m-4  h-18 form-select appearance-none w-96 px-2 py-6  font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 ');
+    const clear_id = document.getElementById('foto-clear_id');
+    clear_id.setAttribute('style', 'width: 2rem;');
+    const id_descripcion = document.getElementById('id_descripcion');
+    id_descripcion.setAttribute('style', 'height: 10rem;');
+</script>
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/editarMenu.css' %}">
+{% endblock %}
+{% block content %}
+<section class="order" id="order">                                                         
+    <div class="flex justify-around py-10">
+        <div class="text-center text-5xl font-extrabold leading-none tracking-tight mb-12">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-900 to-red-700">
+            Agregar Menu
+            </span>
+        </div>
+    </div>
+  
+    <div class="row">
+          
+        <div class="image">
+            <img src="{% static 'img/Formularios/about-img.png' %}" alt="">
+        </div>
+  
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+            <div class="inputBox mb-2">
+                {{ form.nombre }}
+            </div>
+            <div class="inputBox2 flex justify-between items-center">
+                {{ form.valor }}
+                
+                {{ form.categoria }}
+                
+            </div>    
+            {{ form.descripcion }}   
+            <div class="inputBox2 flex-col justify-between flex-graw items-center">
+                <input type="file" name="foto" accept="image/*" id="id_foto" style="width: 100%;">
+                <div>
+                    {{ url}}
+                    <input type="checkbox" name="foto-clear" id="foto-clear_id" style="width: 2rem;">
+                    <label for="foto-clear_id">Limpiar</label>
+                </div>
+            </div> 
+            <input value="Agregar" class="shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+
+        </form>
+  
+    </div>  
+  
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/agregarMesas.css' %}">
+{% endblock %}
+{% block content %}
+<hr>
+    <main>
+        <div class="logo_contacto">
+            <img src="{% static 'img/Formularios/img_editarMesas.png' %}" alt="">
+        </div>
+        <form action="" method="post" class="form_contactenos">{% csrf_token %}
+            <h2>Activar Mesero</h2>
+            <div class="box_inputNombre">
+                <input type="text" placeholder="Documento" name="mesero">
+                <div class="logo_persona">
+                <img src="{% static 'img/Formularios/logo_editarMesas.png' %}" alt="">
+                </div>
+            </div>
+            <input type="submit" value="Activar">
+        </form>
+    </main>
+{% endblock %}

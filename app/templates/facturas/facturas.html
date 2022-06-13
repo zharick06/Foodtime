@@ -1,0 +1,57 @@
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    <script>
+        function cancelarFacturas(mesa) {
+            Swal.fire({
+                "title":"¿Estas seguro?",
+                "icon":"question",
+                "showCancelButton":true,
+                "cancelButtonText":"No, Cancelar",
+                "confirmButtonText":"Si, Cancelar",
+                "reverseButtons":true,
+                "confirmButtonColor":"#dc3545"
+            })
+            .then(function(result) {
+                if(result.isConfirmed) {
+                    window.location.href = "/cancelarFacturas/"+mesa+"/"
+                }
+            })
+        }
+    </script>
+    <script>
+        function pagarFacturas(mesa) {
+            Swal.fire({
+                "title":"¿Estas seguro?",
+                "icon":"question",
+                "showCancelButton":true,
+                "cancelButtonText":"No, Cancelar",
+                "confirmButtonText":"Si, Pagar",
+                "reverseButtons":true,
+                "confirmButtonColor":"#dc3545"
+            })
+            .then(function(result) {
+                if(result.isConfirmed) {
+                    window.location.href = "/pagarFacturas/"+mesa+"/"
+                }
+            })
+        }
+    </script>
+{% for datos in datos %}
+<div class="flex gap-4">
+<p>{{ datos.nombre }}</p>
+<p>{{ datos.cantidad }}</p>
+<p>{{ datos.valor }}</p>
+<p>{{ datos.precio }}</p>
+</div>
+{% endfor %}
+{% for mesa in mesa %}
+<div class="flex gap-4">
+    <a href="#" id="btn" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
+    <a href="#" id="btn" onclick="pagarFacturas({{ mesa.mesa_id }})">Pagar</a>
+</div>
+{% endfor %}

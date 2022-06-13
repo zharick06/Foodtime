@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+<main style="height: 75vh;">
+{% for p in datosM %}
+<div class="flex justify-center items-center gap-8 mt-12">
+  <div class="text-center">
+    {% if p.foto %}
+    <img src="{{ p.foto.url }}" class="rounded-full w-96 mb-4 mx-auto" alt="Avatar" />
+    {% endif %}
+    <h5 class="text-xl font-medium leading-tight mb-2">{{ p.usuario }}</h5>
+  </div>
+  <div class="border-solid border-2 flex flex-col w-full md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+    <div class="p-9 flex flex-col justify-start">
+      <p class="text-gray-700 text-base mb-4">
+        Nombres: {{ p.nombres }}
+      </p>
+      <p class="text-gray-700 text-base mb-4">
+        Appellidos: {{ p.apellidos }}
+      </p>
+      {% if p.genero == 'M' %}
+      <p class="text-gray-700 text-base mb-4">
+        Genero: Masculino
+      </p>
+      {% elif p.genero == 'F' %}
+      <p class="text-gray-700 text-base mb-4">
+        Genero: Femenino
+      </p>
+      {% elif p.genero == 'O' %}
+      <p class="text-gray-700 text-base mb-4">
+        Genero: Otro
+      </p>
+      {% endif %}
+      <p class="text-gray-700 text-base mb-4">
+        Correo: {{ p.correo }}
+      </p>
+      <p class="text-gray-700 text-base mb-4">
+        Celular: {{ p.telefono }}
+      </p>
+      <p class="text-gray-700 text-base mb-4">
+        Departamento: Quindio
+      </p>
+      <p class="text-gray-700 text-base mb-4">
+        Municipio: {{ p.municipio }}
+      </p>
+      <p class="text-gray-700 text-base mb-4">
+        Direccion: {{ p.direccion }}
+      </p>
+      <p class="text-gray-600 text-xs">Last updated 3 mins ago</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</main>
+
+{% endblock %}

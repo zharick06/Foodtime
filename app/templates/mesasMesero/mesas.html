@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+
+<script>
+    function desactivarMesa(id) {
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Editar",
+            "reverseButtons":true,
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result) {
+            if(result.isConfirmed) {
+                window.location.href = "/desactivar-mesa/"+id+"/"
+            }
+        })
+    }
+</script>
+<script>
+    function activarMesa(id) {
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Editar",
+            "reverseButtons":true,
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result) {
+            if(result.isConfirmed) {
+                window.location.href = "/activar-mesa/"+id+"/"
+            }
+        })
+    }
+</script>
+<main>
+    <div class="container ml-auto mt-10 mr-auto flex flex-wrap  lg:max-w-0xl lg:px-5">
+        {% for m in mesas %}
+        <div class=" mb-12 md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
+          <div
+            class="border-solid border-2 bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+            <figure class="mb-2">
+              <img src="{% static 'img/Logos/sillas.png' %}" alt="" class="h-65 ml-auto mr-auto rounded-md" />
+            </figure>
+            <div class="rounded-lg p-4 flex flex-col">
+              <div>
+                <h5 class="text-2xl font-bold leading-none text-center  mb-4"> Mesa {{ m.nombre }} </h5>
+    
+              </div>
+              {% if m.estado == "A" %}   
+              <button href="#" id="btn" onclick="desactivarMesa({{ m.id }})" class="
+                    mb-2
+                    transition 
+                    duration-500 
+                    ease-in-out 
+                    
+                    transition 
+                    ease-in-out 
+                    delay-150 
+                    hover:-translate-y-1 
+                    hover:scale-110 
+                    hover:bg-red-800 
+                    duration-300
+            
+                    bg-red-800 
+                    text-white 
+                    font-semibold 
+                    py-2 px-2
+                    rounded-md
+                   
+                ">Desactivar</button>
+              {% elif m.estado == "I" %}
+              <button href="#" id="btn" onclick="activarMesa({{ m.id }})" class="
+                    mb-2
+                    transition 
+                    duration-500 
+                    ease-in-out 
+                    
+                    transition 
+                    ease-in-out 
+                    delay-150 
+                    hover:-translate-y-1 
+                    hover:scale-110 
+                    hover:bg-red-800 
+                    duration-300
+            
+                    bg-red-800 
+                    text-white 
+                    font-semibold 
+                    py-2 px-2
+                    rounded-md
+                   
+                ">Activar</button>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %} 
+    
+    </div>
+</main>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/mesas.js' %}"></script>
+{% endblock %}

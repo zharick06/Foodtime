@@ -1,0 +1,233 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+<hr>
+<script>
+    function eliminarMesa(id) {
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "text":"Esta accion no se puede revertir",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Eliminar",
+            "reverseButtons":true,
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result) {
+            if(result.isConfirmed) {
+                window.location.href = "/eliminar-mesa/"+id+"/"
+            }
+        })
+    }
+</script>
+<script>
+    function desactivarMesa(id) {
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Editar",
+            "reverseButtons":true,
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result) {
+            if(result.isConfirmed) {
+                window.location.href = "/desactivar-mesa/"+id+"/"
+            }
+        })
+    }
+</script>
+<script>
+    function activarMesa(id) {
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Editar",
+            "reverseButtons":true,
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result) {
+            if(result.isConfirmed) {
+                window.location.href = "/activar-mesa/"+id+"/"
+            }
+        })
+    }
+</script>
+    <main class="m-12 flex-col">
+        <div class="flex mb-8 justify-end">
+            <a href="{% url 'agregarMesa' %}">
+            <button
+                  class="
+                        flex
+                        justify-center
+                        items-center
+                        h-8
+                        w-40
+                        mb-2
+                        transition 
+                        duration-500 
+                        ease-in-out 
+                        
+                        transition 
+                        ease-in-out 
+                        delay-150 
+                        hover:-translate-y-1 
+                        hover:scale-110 
+                        hover:bg-red-800 
+                        duration-300
+                
+                        bg-red-800 
+                        text-white 
+                        font-semibold 
+                        py-2 px-2
+                        rounded-md
+                       
+                    "
+                >
+                  Añadir
+                </button></a>
+              
+        </div>
+        
+          <div class="container m-0 flex flex-wrap  lg:max-w-0xl lg:px-5">
+            {% for m in mesas %}
+            <div class=" mb-12 md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
+              <div
+                class="border-solid border-2 bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+                {% if m.estado == "A" %}
+                <div class="flex justify-center items-center gap-3">
+                  <span class="text-green-800 text-xl">•</span>
+                  <h1>Disponible</h1>
+                </div>
+                {% elif m.estado == "I" %}
+                <div class="flex justify-center items-center gap-3">
+                  <span class="text-red-800 text-xl">•</span>
+                  <h1>Ocupada</h1>
+                </div>
+                {% endif %}
+                <figure class="mb-2">
+                  <img src="{% static 'img/Logos/sillas.png' %}" alt="" class="h-65 ml-auto mr-auto rounded-md" />
+                </figure>
+                <div class="rounded-lg p-4 flex flex-col">
+                  <div>
+                    <h5 class="text-2xl font-bold leading-none text-center  mb-4"> Mesa {{ m.nombre }} </h5>
+        
+                  </div>
+                  <div class="flex flex-row flex-wrap justify-center item-center gap-4">
+                    {% if m.estado == "A" %}
+                    <a href="#" id="btn" onclick="desactivarMesa({{ m.id }})">
+                    <button class="
+                    w-32
+                    mb-2
+                    transition 
+                    duration-500 
+                    ease-in-out 
+                    
+                    transition 
+                    ease-in-out 
+                    delay-150 
+                    hover:-translate-y-1 
+                    hover:scale-110 
+                    hover:bg-red-800 
+                    duration-300
+            
+                    bg-red-800 
+                    text-white 
+                    font-semibold 
+                    py-2 px-2
+                    rounded-md
+                   
+                ">
+                Ocupar
+              </button>
+            </a>
+                    {% elif m.estado == "I" %}
+                    <a href="#" id="btn" onclick="activarMesa({{ m.id }})">
+                    <button class="
+                        w-32
+                        mb-2
+                        transition 
+                        duration-500 
+                        ease-in-out 
+                        
+                        transition 
+                        ease-in-out 
+                        delay-150 
+                        hover:-translate-y-1 
+                        hover:scale-110 
+                        hover:bg-gray-400 
+                        duration-300
+                
+                        bg-gray-400 
+                        text-white 
+                        font-semibold 
+                        py-2 px-2
+                        rounded-md
+                       
+                    ">
+                    Desocupar
+                  </button></a>
+                  {% endif %}
+                  <a href="{% url 'editarMesa' m.id %}"><button class="
+                        w-32
+                        mb-2
+                        transition 
+                        duration-500 
+                        ease-in-out 
+                        
+                        transition 
+                        ease-in-out 
+                        delay-150 
+                        hover:-translate-y-1 
+                        hover:scale-110 
+                        hover:bg-red-800 
+                        duration-300
+                
+                        bg-red-800 
+                        text-white 
+                        font-semibold 
+                        py-2 px-2
+                        rounded-md
+                       
+                    ">
+                    Editar
+                  </button></a>
+                  <a href="#" onclick="eliminarMesa({{ m.id }})"><button class="
+                        w-32
+                        mb-2
+                        transition 
+                        duration-500 
+                        ease-in-out 
+                        
+                        transition 
+                        ease-in-out 
+                        delay-150 
+                        hover:-translate-y-1 
+                        hover:scale-110 
+                        hover:bg-red-800 
+                        duration-300
+                
+                        bg-red-800 
+                        text-white 
+                        font-semibold 
+                        py-2 px-2
+                        rounded-md
+                       
+                    ">
+                    Eliminar
+                  </button></a>
+                </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </main>
+{% endblock %}

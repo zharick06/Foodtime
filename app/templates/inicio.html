@@ -1,0 +1,203 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<style>
+    .home{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    height:40%;
+    align-items: center;
+    background:url({% static 'img/Fondos/home-bg.jpg' %}) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+
+  .home .content{
+    flex:1 1 40rem;
+    padding-top: 6.5rem;
+    padding-left: 1rem;
+  }
+  
+  .home .image{
+    flex:1 1 40rem;
+  }
+  
+  .home .image img{
+    width:100%;
+    padding:1rem;
+    animation:float 3s linear infinite;
+  }
+  
+  @keyframes float{
+    0%, 100%{
+      transform: translateY(0rem);
+    }
+    50%{
+      transform: translateY(3rem);
+    }
+  }
+  
+  .home .content h3{
+    font-size: 4.5rem;
+    color:#333;
+    text-align: justify;
+  
+  }
+  
+  .home .content .nosotros{
+    font-size: 1.2rem;
+    color:black;
+    padding:1rem 0;
+    text-align: justify;
+    
+ 
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div id="carouselExampleCaptions" class="carousel slide relative mb-10" data-bs-ride="carousel">
+    <div class="carousel-inner relative w-full object-cover h-30 overflow-hidden mb-2">
+      <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0">
+        <button
+        type="button"
+        data-bs-target="#carouselExampleCrossfade"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCrossfade"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCrossfade"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-item active float-left w-full ">
+      
+        
+        <img
+        src="{% static 'img/pexels-ron-lach-8922189.jpg' %}"
+        class="brightness-50 " 
+        alt="Wild Landscape"
+        />
+        
+  
+    </div>
+    
+    <div class="carousel-item  float-left w-full">
+        <img
+        src="{% static 'img/pexels-pixabay-262978.jpg' %}"
+        class="brightness-50"
+        alt="Camera"
+        />
+      </div>
+    <div class="carousel-item  float-left w-full">
+        <img
+        src="{% static 'img/pexels-kiro-wang-7097195.jpg' %}"
+        class="brightness-50"
+        alt="Exotic Fruits"
+        />
+      
+      </div>
+     
+        <div class="flex flex-col justify-start items-center h-96 carousel-caption absolute top-40">
+          <div class="text-center text-white ">
+            <h1 class="text-5xl font-bold">BIENVENIDOS</h1>
+        </div>
+        </div>
+        </div>
+    </div>
+  </div>
+  
+  
+       
+  <!-- -----------------------CARD----------------------- -->
+  
+  <div class="container ml-auto mr-auto flex flex-wrap items-start mt-8">
+    <div class="w-full pl-5 lg:pl-2  mt-4">
+      <h1 class="text-3xl font-extrabold text-center"> Servicios</h1>
+    </div>
+    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2 text-black hover:text-red-600">
+      <div class="bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+        <figure class="mb-2">
+          <a href="{% url 'login' %}"><img src="{% static 'img/Logos/login.png' %}" alt="" class="h-64 ml-auto mr-auto" /></a>
+        </figure>
+        <div class="rounded-lg p-4 flex flex-col">
+          <div>
+            <h5 class="text-2xl font-bold leading-none text-center ">Login</h5>
+           
+          </div>
+          
+         
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2 text-black hover:text-red-600">
+      <div class="bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+        <figure class="mb-2">
+          <a href="{% url 'registraR' %}"><img src="{% static 'img/Logos/restaurante.png' %}" alt="" class="h-64 ml-auto mr-auto" /></a>
+        </figure>
+        <div class="rounded-lg p-4 flex flex-col">
+          <div>
+            <h5 class="text-2xl font-bold leading-none text-center ">Registo Restaurante</h5>
+            
+          </div>
+          
+         
+          </div>
+        </div>
+      </div>
+   
+    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2 text-black hover:text-red-600">
+      <div class="bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+        <figure class="mb-2">
+          <a href="{% url 'registraM' %}"><img src="{% static 'img/Logos/mesero.png' %}" alt="" class="h-64 ml-auto mr-auto" /></a>
+        </figure>
+        <div class="rounded-lg p-4 flex flex-col">
+          <div>
+            <h5 class="text-2xl font-bold leading-none text-center ">Registro Mesero</h5>
+           
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2 text-black hover:text-red-600">
+      <div class="bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+        <figure class="mb-4">
+          <a href="{% url 'contactanos' %}"><img src="{% static 'img/Logos/contacto.png' %}" alt="" class=" ml-auto mr-auto" /></a>
+        </figure>
+        <div class="rounded-lg p-4 flex flex-col">
+          <div>
+            <h5 class="text-2xl font-bold leading-none text-center ">Contactenos</h5>
+                  </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- -----------------------CARD2----------------------- -->
+  <section class="home" id="home">
+  
+    <div class="content">
+        <h3>¿Que es Food Time?</h3>
+          <p class="nosotros">Es una plataforma web que ofrece los servicios de gestión de pedidos en los restaurantes y un control maestro, que ayuda a los restaurantes a llevar una mejor organización con su menú, sus mesas, sus facturas y sus pedidos, también ofrece la posibilidad que los restaurantes ofrezcan ofertas de empleo (vacantes) a los meseros y estos puedan postularse a estas.
+        </p>
+    </div>
+  
+    <div class="image">
+        <img src="{% static 'img/Logos/Ilustración.png' %}">
+    </div>
+  
+  </section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/agregarOferta.css' %}">
+{% endblock %}
+{% block content %}
+<section class="order" id="order">
+    <div class="flex justify-around py-10">
+      <div class="text-center text-5xl font-extrabold leading-none tracking-tight">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-900 to-red-700">
+        Oferta
+        </span>
+      </div>
+    </div>
+  
+    <div class="row">
+          
+        <div class="image">
+            <img src="{% static 'img/Formularios/order-img.jpg' %}" alt="">
+        </div>
+  
+        <form action="" method="post">{% csrf_token %}
+  
+            <textarea placeholder="Descripcion" name="descripcion" id="id_descripcion" cols="30" rows="10"></textarea>
+  
+            <div class="inputBox">
+                <input type="number" id="id_vacantes" name="vacantes" placeholder="Vacantes">
+                <input type="text" id="id_pago" name="pago" placeholder="Pago">
+            </div>
+            <input type="submit" value="Publicar" class="content-center shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+
+             
+        </form>
+  
+    </div>
+  
+</section>
+{% endblock %}
