@@ -4,4 +4,5 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Mesero)
+admin.site.register(Restaurante)
 
