@@ -5,4 +5,5 @@ from .models import *
 
 admin.site.register(Mesero)
 admin.site.register(Restaurante)
+admin.site.register(Categoria)
 
