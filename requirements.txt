@@ -6,3 +6,4 @@ django-tailwind
 django-bootstrap-v5
 gunicorn
 whitenoise
+cloudinary

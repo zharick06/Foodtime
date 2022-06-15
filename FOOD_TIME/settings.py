@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -41,12 +44,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'django.contrib.humanize',
     'app.apps.AppConfig',
     'tailwind',
     'theme',
     "bootstrap5",
 ]
+
+
+cloudinary.config( 
+  cloud_name = "djxkyismz", 
+  api_key = "395559996173789", 
+  api_secret = "8aYWdTfMulujWjf2pjwMDiffdLQ" 
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -149,6 +160,7 @@ INTERNAL_IPS = [
 import os
 
 MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE  =  'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR, 'static'),
@@ -163,3 +175,4 @@ os.makedirs(STATIC_ROOT, exist_ok=True)
 
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+
