@@ -6,4 +6,5 @@ django-tailwind
 django-bootstrap-v5
 gunicorn
 whitenoise
-cloudinary
+django-cloudinary-storage
+django-cloudinary-storage[video]
