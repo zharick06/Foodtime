@@ -54,11 +54,11 @@ INSTALLED_APPS = [
 ]
 
 
-cloudinary.config( 
-  cloud_name = "djxkyismz", 
-  api_key = "395559996173789", 
-  api_secret = "8aYWdTfMulujWjf2pjwMDiffdLQ" 
-)
+CLOUDINARY_STORAGE={
+  'CLOUD_NAME' : "djxkyismz", 
+  'API_KEY' : "395559996173789", 
+  'API_SECRET' : "8aYWdTfMulujWjf2pjwMDiffdLQ" 
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
