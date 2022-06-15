@@ -1,1 +1,1 @@
-web: gunicorn FOOD_TIME.wsgi
+web: gunicorn FOOD_TIME.wsgi --log-file -
