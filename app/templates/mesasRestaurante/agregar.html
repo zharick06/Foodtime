@@ -4,21 +4,41 @@
 <link rel="stylesheet" href="{% static 'css/agregarMesas.css' %}">
 {% endblock %}
 {% block content %}
-<hr>
-    <main>
-        <div class="logo_contacto">
-            <img src="{% static 'img/Formularios/img_editarMesas.png' %}" alt="">
-        </div>
-        <form action="" method="post" class="form_contactenos">{% csrf_token %}
-            <h2>Agregar al Menú</h2>
-            <div class="box_inputNombre">
-                {{ form }}
-                <div class="logo_persona">
-                <img src="{% static 'img/Formularios/logo_editarMesas.png' %}" alt="">
-                </div>
-            </div>
-            <input type="submit" value="Agregar">
-        </form>
-        <script src="{% static 'js/agregarMesa.js' %}"></script>
-    </main>
+<section class="order" id="order">
+    <div class="flex justify-around py-8">
+      <div class="text-center text-5xl font-extrabold leading-none tracking-tight">
+        <span
+          class="mb-12 bg-clip-text text-transparent bg-gradient-to-r from-red-900 to-red-700"
+        >
+        Agregar Mesa
+        </span>
+      </div>
+    </div>
+  
+      <div class="row mb-10 ">
+          
+          <div class="image mb-12">
+              <img src="{% static 'img/Formularios/interior-shot-of-cafe-with-chairs-near-the-bar-with-wooden-tables.jpg' %}" alt="">
+          </div>
+  
+          <form class=""action="" method="post">{% csrf_token %}
+  
+           
+  
+              <div class="top-4 md:top-6 inputBox mb-12">
+                  
+              <input type="number" name="nombre" placeholder="Nombre Mesa">
+              </div>
+              <button class="content-center shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                Agregar
+               </button>
+             
+  
+              
+  
+          </form>
+  
+      </div>
+  
+  </section>
 {% endblock %}
