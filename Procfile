@@ -1,1 +1,1 @@
-web: gunicorn FOODTIME.wsgi
+web: gunicorn FOOD_TIME.wsgi
