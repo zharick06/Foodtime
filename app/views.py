@@ -143,6 +143,8 @@ def perfil(request):
         return redirect(to="perfilR")
     if Mesero.objects.filter(usuario=usuarioActivo).exists()==True:
         return redirect(to="perfilM")
+    if Cocina.objects.filter(usuario=usuarioActivo).exists()==True:
+        return redirect(to="cocina")
 
 def perfilRestaurante(request):
     global user_id 
@@ -644,8 +646,8 @@ def cocina(request):
     global user_id 
     user_id = request.user.id
     usuarioActivo = User.objects.get(id=user_id)
-    mesero = Mesero.objects.get(usuario=usuarioActivo)
-    restaurante = Estado.objects.get(mesero=mesero, estado="AC").restaurante
+    cocina = Cocina.objects.get(usuario=usuarioActivo)
+    restaurante = Cocina.objects.get(usuario=usuarioActivo).restaurante
     datos= Menu.objects.raw("SELECT app_menu.id, app_destallepedido.id as id_detalle, app_menu.nombre, app_destallepedido.cantidad, app_menu.foto FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id  WHERE app_pedido.restaurante_id='%s' AND app_destallepedido.estado='PE'"% restaurante)
     data = {
         'datos': datos
