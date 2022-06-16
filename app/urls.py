@@ -4,6 +4,7 @@ from .views import *
 urlpatterns=[
     path('', inicio, name='inicio'),
     path('facturas/<mesa>/', facturas, name='facturas'),
+    path('mesasFactura/', mesasFactura, name='mesasFactura'),
     path('cancelarFacturas/<mesa>/', cancelarFacturas, name='cancelarFacturas'),
     path('pagarFacturas/<mesa>/', pagarFacturas, name='pagarFacturas'),
     path('cocina/', cocina, name='cocina'),
@@ -41,7 +42,6 @@ urlpatterns=[
     path('vacantes/', vacantes, name='vacantes'),
     path('postular/<id>/', postular, name='postular'),
     path('orden/<mesa>/', orden, name='orden'),
-    path('caja/', caja, name='caja'),
     path('administrador/', administrador, name='administrador'),
     path('restaurantes/<id>/', restaurantes, name='restaurantes'),
     path('agregar/<int:producto_id>/', agregar_producto, name="Add"),

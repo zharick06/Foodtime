@@ -1,0 +1,3 @@
+{% for mesas in mesas %}
+<a href="{% url 'facturas' mesas.id %}">{{ mesas.nombre }}</a>
+{% endfor %}
