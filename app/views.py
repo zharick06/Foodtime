@@ -660,6 +660,7 @@ def cocina(request):
     data = {
         'datos': datos
     }
+    
     return render(request, 'cocina/cocina.html', data)
 
 def finalizarPedido(request, id):
