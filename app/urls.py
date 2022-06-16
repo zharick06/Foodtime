@@ -18,6 +18,7 @@ urlpatterns=[
     path('menu-mesero/', menuMesero, name='menuM'),
     path('detalle_item/<id>/', detalleItem, name='detalleItem'),
     path('detalle_oferta/<id>/', detalleOferta, name='detalleOferta'),
+    path('detalle_vacante/<id>/', detalleVacante, name='detalleVacante'),
     path('menu-restaurante/', menuRestaurante, name='menuR'),
     path('categoriasM/<id>/', categoriasM, name='categoriasM'),
     path('categoriasR/<id>/', categoriasR, name='categoriasR'),

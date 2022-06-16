@@ -464,7 +464,7 @@ def detalleOferta(request, id):
     data = {
         'oferta':oferta,
     }
-    return render(request, 'vacantes/detalle.html', data)
+    return render(request, 'ofertas/detalle.html', data)
 
 def publicar_oferta(request):
     data = {
@@ -588,6 +588,13 @@ def vacantes(request):
         'oferta': oferta
     }
     return render(request, 'vacantes/vacantes.html', data)
+
+def detalleVacante(request, id):
+    oferta = Oferta.objects.filter(id= id)
+    data = {
+        'oferta':oferta,
+    }
+    return render(request, 'vacantes/detalle.html', data)
 
 def postular(request, id):
     global user_id 
