@@ -41,14 +41,7 @@
         })
     }
 </script>
-{% for datos in datos %}
-<div class="flex gap-4">
-<p>{{ datos.nombre }}</p>
-<p>{{ datos.cantidad }}</p>
-<p>{{ datos.valor }}</p>
-<p>{{ datos.precio }}</p>
-</div>
-{% endfor %}
+
 {% for mesa in mesa %}
 <div class="flex gap-4">
     <a href="#" id="btn" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
