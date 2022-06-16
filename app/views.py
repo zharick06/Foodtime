@@ -583,8 +583,8 @@ def vacantes(request):
     postudados=Postulados.objects.filter(mesero=mesero)
     for p in  postudados:
         listPostuladas.append(p.oferta.id)
-    oferta = Oferta.objects.raw("SELECT app_oferta.*, app_restaurante.nombre FROM app_oferta LEFT JOIN app_restaurante ON app_restaurante.nit = app_oferta.restaurante_id")
-    oferta = oferta.objects.exclude(id__in=listPostuladas)
+    oferta = Oferta.objects.select_related('Restaurante').all().exclude(id__in=listPostuladas)
+
     data = {
         'oferta': oferta
     }
