@@ -6,4 +6,6 @@ from .models import *
 admin.site.register(Mesero)
 admin.site.register(Restaurante)
 admin.site.register(Categoria)
+admin.site.register(Cocina)
+admin.site.register(Caja)
 
