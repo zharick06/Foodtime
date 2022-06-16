@@ -641,11 +641,12 @@ def facturas(request, mesa):
     datos= Menu.objects.raw("SELECT app_menu.id, app_menu.nombre, app_menu.valor, app_destallepedido.cantidad, app_menu.valor*app_destallepedido.cantidad as precio FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id  WHERE app_pedido.restaurante_id='{}' AND app_pedido.mesa_id='{}' AND app_pedido.estado='AC'".format(restaurante, mesa))
     mesa= Pedido.objects.raw("SELECT app_pedido.id, app_pedido.mesa_id FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id  WHERE app_pedido.restaurante_id='{}' AND app_pedido.mesa_id='{}' AND app_pedido.estado='AC' LIMIT 1".format(restaurante, mesa))
     total = 0
-
+    # for datos in datos:
+    #     total += datos.precio
     data = {
         'datos': datos,
         'mesa': mesa,
-
+        
     }
     return render(request, 'facturas/facturas.html', data)
 
