@@ -6,6 +6,7 @@ from django.db.models import Max
 import random
 from app.Carrito import Carrito
 from random import choice
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 
 
@@ -19,8 +20,9 @@ def contactanos(request):
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Su mensaje fue correctamente enviado")
         else:
-            print("Ocurrio un error")
+            messages.success(request, "Ocurrio un error")
     return render(request, 'contactanos.html')
 
 def resgistroMesero(request):
@@ -49,9 +51,11 @@ def resgistroMesero(request):
                 user.user_permissions.add(40)
                 login(request, user)
                 request.session['id'] = user.id
+                messages.success(request, "Se ha registrado exitosamente")
                 return redirect(to="perfilM")
                 
             else:
+                messages.success(request, "Ocurrio un error")
                 data = {
                     "municipios": municipios,
                     "form":MeseroForm
@@ -126,9 +130,11 @@ def resgistroRestaurante(request):
                     userCaja.restaurante=restaurante
                     userCaja.save()
                     request.session['id'] = user.id
+                    messages.success(request, "Se ha registrado exitosamente")
                     return redirect(to="perfilR")
                 
             else:
+                messages.success(request, "Ocurrio un error")
                 data = {
                     "municipios": municipios,
                     "form":RestauranteForm
@@ -331,8 +337,10 @@ def agregar_item(request):
                 restaurante = Restaurante.objects.get(nit=user)
                 item.restaurante = restaurante
                 item.save()
+                messages.success(request, "Se ha agregado un nuevo item al menu")
                 return redirect(to="menuR")
             else:
+                messages.success(request, "Ocurrio un error")
                 data["form"] = formulario
         else:
             # anuncio de elegir categoria
@@ -355,8 +363,10 @@ def editar_item(request, id):
         formulario = MenuItemForm(data=request.POST, instance=item, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Se ha editado correctamente")
             return redirect(to="menuR")
         else:
+            messages.success(request, "Ocurrio un error")
             data["form"] = formulario
     return render(request, 'menuRestaurante/editar.html', data)
 
@@ -407,8 +417,10 @@ def agregar_mesa(request):
             restaurante = Restaurante.objects.get(nit=user)
             mesa.restaurante = restaurante
             mesa.save()
+            messages.success(request, "Se ha agregado una nueva mesa")
             return redirect(to="mesasR")
         else:
+            messages.success(request, "Ocurrio un error")
             data["form"] = formulario
 
     return render(request, 'mesasRestaurante/agregar.html', data)
@@ -422,8 +434,10 @@ def editar_mesa(request, id):
         formulario = MesasForm(data=request.POST, instance=mesa)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Se ha editado correctamente")
             return redirect(to="mesasR")
         else:
+            messages.success(request, "Ocurrio un error")
             data["form"] = formulario
     return render(request, 'mesasRestaurante/editar.html', data)
 
@@ -500,8 +514,10 @@ def publicar_oferta(request):
             telefono = Restaurante.objects.get(nit=user).telefono
             oferta.telefono= telefono
             oferta.save()
+            messages.success(request, "Se ha agregado una nueva oferta")
             return redirect(to="ofertas")
         else:
+            messages.success(request, "Ocurrio un error")
             data["form"] = formulario
 
     return render(request, 'ofertas/agregar.html', data)
@@ -539,7 +555,6 @@ def activar_mesero(request):
         if Mesero.objects.filter(documento=mesero).exists():
             if Estado.objects.filter(mesero=mesero).exists():
                 for t in Estado.objects.filter(mesero=mesero):
-                    print(t)
                     if t.estado!="AC":
                         permiso = Estado()
                         docMesero = Mesero.objects.get(documento=mesero)
@@ -551,9 +566,10 @@ def activar_mesero(request):
                         userMesero = Mesero.objects.get(documento=mesero).usuario
                         u = User.objects.get(username=userMesero)
                         u.user_permissions.add(44)
+                        messages.success(request, "Se ha activado correctamente el mesero")
                         return redirect(to="meseros")
                     else:
-                        print("Este mesero esta activo, no puede ser activado hasta ser desactivado")
+                        messages.success(request, "Este mesero esta activo, no puede ser activado hasta ser desactivado")
                         break
             else:
                 permiso = Estado()
@@ -566,9 +582,10 @@ def activar_mesero(request):
                 userMesero = Mesero.objects.get(documento=mesero).usuario
                 u = User.objects.get(username=userMesero)
                 u.user_permissions.add(44)
+                messages.success(request, "Se ha activado correctamente el mesero")
                 return redirect(to="meseros")
         else:
-            print("No existe este mesero")
+            messages.success(request, "No existe este mesero")
 
     return render(request, 'meseros/activar.html')
 

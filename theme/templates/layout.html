@@ -133,7 +133,18 @@
     </div>
   </header>
   <hr class="border-solid border-2 border-red-800 bg-red-800">
-
+  {% if messages %}
+    {% for m in messages %}
+    
+    <script>
+      Swal.fire({
+        title: 'Oops...',
+        text: '{{m}}',
+})
+    </script>
+    
+    {% endfor %}
+  {% endif %}
   {% block content %}
   {% endblock %}
 
