@@ -17,8 +17,10 @@
         <p>{{ oferta.telefono }}</p>
         <br>
         {% for postulados in postulados %}
+        <div style="display: flex; justify-content: center;">
           <p>{{ postulados.usuario }}</p>
           <p>{{ postulados.telefono }}</p>
+        </div>
         {% endfor %}
       </div>
     </div>
