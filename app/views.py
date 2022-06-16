@@ -590,7 +590,7 @@ def vacantes(request):
     return render(request, 'vacantes/vacantes.html', data)
 
 def detalleVacante(request, id):
-    oferta = Oferta.objects.filter(id= id)
+    oferta = Oferta.objects.raw("SELECT app_oferta.*, app_restaurante.nombre FROM app_oferta LEFT JOIN app_restaurante ON app_restaurante.nit = app_oferta.restaurante_id WHERE app_oferta.id=%s"% id)
     data = {
         'oferta':oferta,
     }
