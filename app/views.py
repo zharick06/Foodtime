@@ -583,7 +583,7 @@ def vacantes(request):
     postudados=Postulados.objects.filter(mesero=mesero)
     for p in  postudados:
         listPostuladas.append(p.oferta.id)
-    oferta = Restaurante.objects.select_related('nombre').all().exclude(id__in=listPostuladas)
+    oferta = Restaurante.objects.select_related('nombre').all()
 
     data = {
         'oferta': oferta
