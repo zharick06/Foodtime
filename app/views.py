@@ -464,9 +464,11 @@ def ofertas(request):
     return render(request, 'ofertas/ofertas.html', data)
 
 def detalleOferta(request, id):
-    oferta = Oferta.objects.filter(id= id)
+    oferta = Oferta.objects.raw("SELECT app_oferta.*, app_restaurante.nombre FROM app_oferta LEFT JOIN app_restaurante ON app_restaurante.nit = app_oferta.restaurante_id WHERE app_oferta.id=%s"% id)
+    postulados = Oferta.objects.raw("SELECT app_postulados.*, app_mesero.usuario, app_mesero.telefono FROM app_postulados LEFT JOIN app_mesero ON app_mesero.documento = app_postulados.mesero_id WHERE app_postulados.oferta_id=%s"% id)
     data = {
         'oferta':oferta,
+        'postulados':postulados
     }
     return render(request, 'ofertas/detalle.html', data)
 
