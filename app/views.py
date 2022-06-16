@@ -145,6 +145,8 @@ def perfil(request):
         return redirect(to="perfilM")
     if Cocina.objects.filter(usuario=usuarioActivo).exists()==True:
         return redirect(to="cocina")
+    if Caja.objects.filter(usuario=usuarioActivo).exists()==True:
+        return redirect(to="caja")
 
 def perfilRestaurante(request):
     global user_id 
@@ -632,8 +634,8 @@ def facturas(request, mesa):
     global user_id 
     user_id = request.user.id
     usuarioActivo = User.objects.get(id=user_id)
-    mesero = Mesero.objects.get(usuario=usuarioActivo)
-    restaurante = Estado.objects.get(mesero=mesero, estado="AC").restaurante
+    caja = Caja.objects.get(usuario=usuarioActivo)
+    restaurante = Caja.objects.get(usuario=usuarioActivo).restaurante
     datos= Menu.objects.raw("SELECT app_menu.id, app_menu.nombre, app_menu.valor, app_destallepedido.cantidad, app_menu.valor*app_destallepedido.cantidad as precio FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id  WHERE app_pedido.restaurante_id='{}' AND app_pedido.mesa_id='{}' AND app_pedido.estado='AC'".format(restaurante, mesa))
     mesa= Pedido.objects.raw("SELECT app_pedido.id, app_pedido.mesa_id FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id  WHERE app_pedido.restaurante_id='{}' AND app_pedido.mesa_id='{}' AND app_pedido.estado='AC' LIMIT 1".format(restaurante, mesa))
     data = {
