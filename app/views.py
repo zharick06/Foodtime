@@ -662,7 +662,7 @@ def facturas(request, mesa):
     data = {
         'datos': datos,
         'mesa': mesa,
-        'total': total
+        'total': total,
     }
     return render(request, 'facturas/facturas.html', data)
 
