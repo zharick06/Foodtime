@@ -113,13 +113,13 @@
 
             <!-- total amount -->
             <div class="flex justify-end font-bold space-x-4 text-2xl border-t border-gray-100 px-5 py-4">
-                {% for total in total %}
+                
                 <div>Total</div>
                 
             </div>
 
             <div class="flex justify-end">
-
+                {% for total in total %}
                 <input type="text" disabled class="border border-black bg-gray-50" x-model="" value="{{ total.total }}" />
                 {% endfor %}
             </div>
