@@ -124,14 +124,14 @@
                 <input id="total" type="text" disabled class="border border-black bg-gray-50" x-model="" value="" />
                 <script>
                     const precio = document.querySelectorAll("#precio")
-                    
+                    let valor = 0
                     precio.forEach(element => {
                         console.log(element);
-                        total = total + element.value
+                        valor = valor + element.value
                     });
                     const total = document.getElementById('total')
                     console.log(total);
-                    total.textContent=total
+                    total.textContent=valor
                 </script>
             </div>
         </div>
