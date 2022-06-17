@@ -657,12 +657,11 @@ def facturas(request, mesa):
     restaurante = Caja.objects.get(usuario=usuarioActivo).restaurante
     datos= Menu.objects.raw("SELECT app_menu.id, app_menu.nombre, app_menu.valor, app_destallepedido.cantidad, app_menu.valor*app_destallepedido.cantidad as precio FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id  WHERE app_pedido.restaurante_id='{}' AND app_pedido.mesa_id='{}' AND app_pedido.estado='AC'".format(restaurante, mesa))
     mesa= Pedido.objects.raw("SELECT app_pedido.id, app_pedido.mesa_id FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id  WHERE app_pedido.restaurante_id='{}' AND app_pedido.mesa_id='{}' AND app_pedido.estado='AC' LIMIT 1".format(restaurante, mesa))
-    total = Menu.objects.raw("SELECT app_mesas.id, SUM(app_menu.valor*app_destallepedido.cantidad) as total FROM app_destallepedido RIGHT JOIN app_pedido ON app_pedido.id = app_destallepedido.pedido_id INNER JOIN app_menu ON app_menu.id = app_destallepedido.articulo_id INNER JOIN app_mesas ON app_pedido.mesa_id=app_mesas.id  WHERE app_pedido.restaurante_id='{}' AND app_pedido.mesa_id='{}' AND app_pedido.estado='AC' GROUP BY app_mesas.id".format(restaurante, mesa))
+    
 
     data = {
         'datos': datos,
         'mesa': mesa,
-        'total': total,
     }
     return render(request, 'facturas/facturas.html', data)
 
