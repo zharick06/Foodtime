@@ -43,12 +43,6 @@
     }
 </script>
 
-{% for mesa in mesa %}
-<div class="flex gap-4">
-    <a href="#" id="btn" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
-    <a href="#" id="btn" onclick="pagarFacturas({{ mesa.mesa_id }})">Pagar</a>
-</div>
-{% endfor %}
 
 <section class="antialiased  text-gray-600  px-4" x-data="app">
     <div class="flex flex-col justify-center h-96">
@@ -103,6 +97,14 @@
                                 <div  class="text-left font-medium text-red-800">
                                     <p id="precio">{{ datos.precio }}</p>
                                 </div>
+                            </td>
+                            <td class="p-2">
+                                {% for mesa in mesa %}
+                                <div class="flex gap-4">
+                                    <a href="#" id="btn" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
+                                    <a href="#" id="btn" onclick="pagarFacturas({{ mesa.mesa_id }})">Pagar</a>
+                                </div>
+                                {% endfor %}
                             </td>
                         </tr>
                         {% endfor %}
