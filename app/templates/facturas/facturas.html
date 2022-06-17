@@ -98,14 +98,6 @@
                                     <p id="precio">{{ datos.precio }}</p>
                                 </div>
                             </td>
-                            <td class="p-2">
-                                {% for mesa in mesa %}
-                                <div class="flex gap-4">
-                                    <a href="#" id="btn" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
-                                    <a href="#" id="btn" onclick="pagarFacturas({{ mesa.mesa_id }})">Pagar</a>
-                                </div>
-                                {% endfor %}
-                            </td>
                         </tr>
                         {% endfor %}
                        
@@ -135,6 +127,14 @@
                     console.log(total);
                     total.value=valor
                 </script>
+            </div>
+            <div class="flex justify-center">
+                {% for mesa in mesa %}
+                <div class="flex gap-4">
+                    <a href="#" id="btn" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
+                    <a href="#" id="btn" onclick="pagarFacturas({{ mesa.mesa_id }})">Pagar</a>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
