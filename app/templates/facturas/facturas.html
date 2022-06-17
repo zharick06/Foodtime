@@ -126,7 +126,7 @@
                     const precio = document.querySelectorAll("p")
                     let valor = 0
                     precio.forEach(element => {
-                        console.log(element);
+                        console.log(parseInt(element.innerHTML));
                         valor = valor + element.value
                     });
                     const total = document.getElementById('total')
