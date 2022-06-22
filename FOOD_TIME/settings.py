@@ -106,6 +106,16 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'FOOD_TIME',
+#         'USER': 'postgres',
+#         'PASSWORD': 'FOODTIME123',
+#         'HOST': 'localhost',
+#         'DATABASE_PORT': '5432'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

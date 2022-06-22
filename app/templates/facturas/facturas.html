@@ -44,12 +44,63 @@
 </script>
 
 
-<a href="{%  url 'mesasFactura' %}">Atras</a>
+<a class=
+    "fixed
+    top-4
+    left-4
+    border-2
+    border-solid
+    border-white
+    mb-2
+    transition 
+    duration-500 
+    ease-in-out 
+    transition 
+    ease-in-out 
+    delay-150 
+    hover:-translate-y-1 
+    hover:scale-110 
+    hover:bg-red-800 
+    duration-300
+    bg-red-800 
+    text-white 
+    font-semibold 
+    py-2 px-2
+    rounded-md"  
+    href="{%  url 'mesasFactura' %}">
+Atras
+</a>
+<a class=
+        "fixed
+        top-4
+        right-4
+        border-2
+        border-solid
+        border-white
+        mb-2
+        transition 
+        duration-500 
+        ease-in-out 
+        transition 
+        ease-in-out 
+        delay-150 
+        hover:-translate-y-1 
+        hover:scale-110 
+        hover:bg-red-800 
+        duration-300
+        bg-red-800 
+        text-white 
+        font-semibold 
+        py-2 px-2
+        rounded-md" 
+        href="{% url 'logout' %}">
+        Cerrar Sesion
+    </a>
 
-<section class="antialiased  text-gray-600  px-4" x-data="app">
-    <div class="flex flex-col justify-center h-96">
+<section class="antialiased  text-gray-600 mt-4 px-4" x-data="app">
+    <div class="flex flex-col justify-center mt-4  h-96">
         <!-- Table -->
-        <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+        <div class="w-full mt-8 max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
             <header class="px-5 py-4 border-b border-gray-100">
                 <div class="font-semibold text-gray-800">Factura</div>
             </header>
@@ -133,8 +184,38 @@
             <div class="flex justify-center">
                 {% for mesa in mesa %}
                 <div class="flex gap-4">
-                    <a href="#" id="btn" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
-                    <a href="#" id="btn" onclick="pagarFacturas({{ mesa.mesa_id }})">Pagar</a>
+                    <a href="#" id="btn" class="mb-2
+                    transition 
+                    duration-500 
+                    ease-in-out 
+                    transition 
+                    ease-in-out 
+                    delay-150 
+                    hover:-translate-y-1 
+                    hover:scale-110 
+                    hover:bg-red-800 
+                    duration-300
+                    bg-red-800 
+                    text-white 
+                    font-semibold 
+                    py-2 px-2
+                    rounded-md" onclick="cancelarFacturas({{ mesa.mesa_id }})">Cancelar</a>
+                    <a href="#" id="btn" class="mb-2
+                    transition 
+                    duration-500 
+                    ease-in-out 
+                    transition 
+                    ease-in-out 
+                    delay-150 
+                    hover:-translate-y-1 
+                    hover:scale-110 
+                    hover:bg-red-800 
+                    duration-300
+                    bg-red-800 
+                    text-white 
+                    font-semibold 
+                    py-2 px-2
+                    rounded-md" onclick="pagarFacturas({{ mesa.mesa_id }})">Pagar</a>
                 </div>
                 {% endfor %}
             </div>

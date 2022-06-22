@@ -82,7 +82,7 @@ class Caja(models.Model):
         return self.usuario
 
 class Oferta(models.Model):
-    descripcion = models.CharField(max_length=100)
+    descripcion = models.TextField()
     vacantes = models.IntegerField()
     pago = models.IntegerField()
     direccion = models.CharField(max_length=50)
@@ -110,7 +110,7 @@ class Categoria(models.Model):
         return self.nombre
 
 class Menu(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.TextField()
     foto =  models.ImageField(upload_to="menu", blank=True, null=True)
     descripcion = models.TextField(max_length=100)
     valor = models.IntegerField()
