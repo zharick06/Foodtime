@@ -1,3 +1,6 @@
+{% load static %}
+
+<link rel="shortcut icon" href="{% static 'img/Logos/FoodTimefav.png' %}" type="image/x-icon">
 {% for mesas in mesas %}
 <a href="{% url 'facturas' mesas.id %}">{{ mesas.nombre }}</a>
 {% endfor %}

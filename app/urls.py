@@ -41,6 +41,7 @@ urlpatterns=[
     path('desactivar-mesero/<documento>/', desactivar_mesero, name='desactivarMesero'),
     path('vacantes/', vacantes, name='vacantes'),
     path('postular/<id>/', postular, name='postular'),
+    path('postulaciones', postulaciones, name='postulaciones'),
     path('orden/<mesa>/', orden, name='orden'),
     path('administrador/', administrador, name='administrador'),
     path('restaurantes/<id>/', restaurantes, name='restaurantes'),

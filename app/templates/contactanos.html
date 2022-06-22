@@ -4,14 +4,14 @@
 
 {% endblock %}
 {% block content %}
-  <!-- component -->
+<!-- component -->
 <main style="min-height: 83vh;">
   <div class=" sm:pt-2 sm:pb-12 flex-row" style="padding-top: 3rem; margin-top: 2rem; padding-bottom: 4rem;">
     <div class="relative flex-left py-3 sm:max-w-xl sm:mx-auto">
       <div
         class="absolute inset-1 bg-gradient-to-r from-red-800 to-red-800 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
       </div>
-      <div class="border-solid border-2 relative bg-white shadow-lg sm:rounded-3xl sm:p-16">
+      <form action="" method="post" class="border-solid border-2 relative bg-white shadow-lg sm:rounded-3xl sm:p-16">{% csrf_token %}
         <div class="max-w-md mx-auto">
           <div>
             <h1 class="text-3xl font-semibold">Contactanos</h1>
@@ -20,7 +20,7 @@
             <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
               <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-red-800">Nombre</label>
-                <input type="email" id="email"
+                <input type="text" id="id_nombre" name="nombre"
                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-red-700 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                   placeholder="Nombre" required>
               </div>
@@ -34,31 +34,29 @@
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                   </svg>
                 </div>
-                <input type="text" id="email-address-icon"
+                <input type="email" id="email-address-icon" name="correo"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:border-red-700 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="nombre@gmail.com">
               </div>
               <label for="message"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-red-800">Mensaje</label>
-              <textarea id="message" rows="4"
+              <textarea id="message" rows="4" name="mensaje"
                 class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-red-700 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="deja el mensaje"></textarea>
               <div class="relative flex justify-center">
                 <button
                   class="flex p-2 lg:px-2 md:mx-2 text-red-900 text-center border border-transparent rounded hover:bg-red-800 hover:text-white transition-colors duration-300"
-                  style="border: solid 2px #991b1b;">Enviar</button>
+                  style="border: solid 2px #991b1b;" type="submit">Enviar</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </main>
 
-  {% endblock %}
-  {% block js %}
-<script>
-    let footer = document.getElementById('footer').style.bottom = "unset";
-</script>
+{% endblock %}
+{% block js %}
+
 {% endblock %}

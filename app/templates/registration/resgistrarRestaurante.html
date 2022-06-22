@@ -48,6 +48,7 @@
                                     Nit
                                 </label>
                                 <input
+                                    required
                                     id="id_nit"
                                     name="nit"
                                     class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -60,6 +61,7 @@
                                     Nombre
                                 </label>
                                 <input
+                                    required
                                     id="id_nombre"
                                     name="nombre"
                                     class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -73,7 +75,7 @@
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="Municipio">
                                     Municipio
                                 </label>
-                                <select name="municipio" id="id_municipio" class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
+                                <select required name="municipio" id="id_municipio" class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
                                     <option value="" selected="" class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">Municipio</option>
                                     {% for m in municipios %}
                                     <option value="{{ m.id }}" class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">{{ m.nombre }}</option>
@@ -85,6 +87,7 @@
                                     Direccion
                                 </label>
                                 <input
+                                    required
                                     id="id_direccion"
                                     name="direccion"
                                     class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -98,6 +101,7 @@
                                 Correo
                             </label>
                             <input
+                                required
                                 id="id_correo"
                                 name="correo"
                                 class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -113,6 +117,7 @@
                                     Celular
                                 </label>
                                 <input
+                                    required
                                     name="celular"
                                     class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     type="text"
@@ -137,6 +142,7 @@
                                     Contraseña
                                 </label>
                                 <input
+                                    required
                                     id="id_contraseña"
                                     name="contraseña"
                                     class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"

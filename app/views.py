@@ -631,6 +631,17 @@ def postular(request, id):
     postulante.save()
     return redirect(to="vacantes")
 
+def postulaciones(request):
+    global user_id 
+    user_id = request.user.id
+    usuarioActivo = User.objects.get(id=user_id)
+    mesero = Mesero.objects.get(usuario=usuarioActivo)
+    ofertasPostuladas = Postulados.objects.filter(mesero=mesero).order_by('-fecha')
+    data = {
+        'oferta':ofertasPostuladas,
+    }
+    return render(request, 'vacantes/postulaciones.html', data)
+
 def caja(request):
     
     return render(request, 'caja/caja.html')
