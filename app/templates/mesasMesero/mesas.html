@@ -47,9 +47,23 @@
         <div class=" mb-12 md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
           <div
             class="border-solid border-2 bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
-            <figure class="mb-2">
-              <img src="{% static 'img/Logos/sillas.png' %}" alt="" class="h-65 ml-auto mr-auto rounded-md" />
-            </figure>
+            {% if m.estado == "A" %}
+                <div class="flex justify-center items-center gap-3">
+                  <span class="text-green-800 text-xl">•</span>
+                  <h1>Disponible</h1>
+                </div>
+                <figure class="mb-2">
+                  <img src="{% static 'img/Logos/Disponible.png' %}" style="width: 5rem" alt="" class="ml-auto mr-auto rounded-md" />
+                </figure>
+                {% elif m.estado == "I" %}
+                <div class="flex justify-center items-center gap-3">
+                  <span class="text-red-800 text-xl">•</span>
+                  <h1>Ocupada</h1>
+                </div>
+                <figure class="mb-2">
+                  <img src="{% static 'img/Logos/Ocupado.png' %}" style="width: 5rem" alt=""  class="ml-auto mr-auto rounded-md" />
+                </figure>
+                {% endif %}
             <div class="rounded-lg p-4 flex flex-col">
               <div>
                 <h5 class="text-2xl font-bold leading-none text-center  mb-4"> Mesa {{ m.nombre }} </h5>
