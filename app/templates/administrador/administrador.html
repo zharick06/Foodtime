@@ -9,28 +9,59 @@
     <link rel="shortcut icon" href="{% static 'img/Logos/FoodTimefav.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
 </head>
-<body class="p-2">
-    {% for m in municipios %}
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<body>
+    <a class=
+        "
+        border-2
+        border-solid
+        border-white
+        mb-2
+        transition 
+        duration-500 
+        ease-in-out 
+        transition 
+        ease-in-out 
+        delay-150 
+        hover:-translate-y-1 
+        hover:scale-110 
+        hover:bg-red-800 
+        duration-300
+        bg-red-800 
+        text-white 
+        font-semibold 
+        py-2 px-2
+        rounded-md" 
+        href="{% url 'logout' %}" style="position: fixed; top: 2rem; right: 2rem;">
+        Cerrar Sesion
+    </a>
+    <header class="px-5 py-4 border-b border-gray-100">
+        <div class="font-semibold text-gray-800 flex justify-center"><h1 class="text-7xl">Administrador</h1></div>
+    </header>
+    <section class="p-4">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-red-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-white">
                         Municipios
                     </th>
                 </tr>
             </thead>
             <tbody>
+                {% for m in municipios %}
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                         <a href="{% url 'restaurantes' m.id %}">{{ m.nombre }}</a>
                     </th>
                     
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
-    {% endfor %}
+</section>
 </body>
 </html>
