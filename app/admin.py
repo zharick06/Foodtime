@@ -8,4 +8,5 @@ admin.site.register(Restaurante)
 admin.site.register(Categoria)
 admin.site.register(Cocina)
 admin.site.register(Caja)
+admin.site.register(Municipio)
 
