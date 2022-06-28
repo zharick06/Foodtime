@@ -92,8 +92,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'FOOD_TIME.wsgi.application'
 
 
-Database
-https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
