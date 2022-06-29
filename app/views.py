@@ -152,7 +152,7 @@ def perfil(request):
         return redirect(to="cocina")
     if Caja.objects.filter(usuario=usuarioActivo).exists()==True:
         return redirect(to="mesasFactura")
-    if User.objects.filter(usuario=usuarioActivo).exists()==True:
+    if User.objects.filter(username=usuarioActivo, is_staff=True).exists()==True:
         return redirect(to='administrador')
 
 def perfilRestaurante(request):
