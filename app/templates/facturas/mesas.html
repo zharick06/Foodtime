@@ -44,6 +44,21 @@
 
 <section class="antialiased  text-gray-600 mt-4 px-4" x-data="app">
     <div class="flex flex-col justify-center mt-4  h-96">
-        
+        {% for mesas in mesas %}
+        <div class="flex justify-center">
+            <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
+              <div class="py-3 px-6 border-b border-gray-300">
+                Mesa
+              </div>
+              <div class="p-6">
+                <h5 class="text-gray-900 text-xl font-medium mb-2">Special title treatment</h5>
+                <p class="text-gray-700 text-base mb-4">
+                    {{ mesas.nombre }}
+                </p>
+                <a href="{% url 'facturas' mesas.id %}" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Ver Factura</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
     </div>
 </section>
