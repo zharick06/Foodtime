@@ -215,7 +215,7 @@
 
                             </div>
                         </div>
-                        <button id="id_btn" class="content-center shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                        <button disabled id="id_btn" class="content-center shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                         Registrar
                         </button>
                     
@@ -224,7 +224,17 @@
             </div>
         </div>
     </div>
-
+    <script>
+        const expresionRegular = {
+            validacion: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/
+        }
+        const password = document.getElementById('id_contraseña')
+        function validacionContraseña() {
+            if (expresionRegular.validacion.test(password.value)) {
+                password.setAttribute("style", "border:green;")
+            }
+        }
+    </script>
 </body>
 </html>
 
