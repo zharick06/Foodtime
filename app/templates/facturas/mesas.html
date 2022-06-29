@@ -1,9 +1,7 @@
 {% load static %}
 
 <link rel="shortcut icon" href="{% static 'img/Logos/FoodTimefav.png' %}" type="image/x-icon">
-<!-- {% for mesas in mesas %}
-<a href="{% url 'facturas' mesas.id %}">{{ mesas.nombre }}</a>
-{% endfor %} -->
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
@@ -41,7 +39,9 @@
         href="{% url 'logout' %}">
         Cerrar Sesion
     </a>
-
+    <header class="px-5 py-4 border-b border-gray-100">
+        <div class="font-semibold text-gray-800 flex justify-center"><h1 class="text-7xl">Administrador</h1></div>
+    </header>
 <section class="antialiased  text-gray-600 mt-4 px-4" x-data="app">
     <div class="flex flex-graw justify-center mt-4 gap-4">
         {% for mesas in mesas %}
