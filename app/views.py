@@ -160,10 +160,15 @@ def perfilRestaurante(request):
     user_id = request.user.id
     usuarioActivo = User.objects.get(id=user_id)
     datosR = Restaurante.objects.filter(nit=usuarioActivo)
+    restaurante = Restaurante.objects.get(nit=usuarioActivo) 
+    usuarioCocina = Cocina.objects.filter(restaurante=restaurante)
+    usuarioCaja = Caja.objects.filter(restaurante=restaurante)
 
     data = {
         'datosR':datosR,
-        'mesero':True
+        'mesero':True,
+        'usuarioCocina':usuarioCocina,
+        'usuarioCaja':usuarioCaja
     }
     return render(request, 'perfiles/perfilRestaurante.html', data)
 

@@ -95,29 +95,29 @@ WSGI_APPLICATION = 'FOOD_TIME.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd8clbin7pspnhj',
+#         'USER': 'oxxwmwzvxbgvht',
+#         'PASSWORD': 'c840de44ef92f658197e6a24e4c694802a9f0dfd3e1177133bfa382528f90b9b',
+#         'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
+#         'DATABASE_PORT': '5432'
+#     }
+# }
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8clbin7pspnhj',
-        'USER': 'oxxwmwzvxbgvht',
-        'PASSWORD': 'c840de44ef92f658197e6a24e4c694802a9f0dfd3e1177133bfa382528f90b9b',
-        'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
+        'NAME': 'FOOD_TIME',
+        'USER': 'postgres',
+        'PASSWORD': 'FOODTIME123',
+        'HOST': 'localhost',
         'DATABASE_PORT': '5432'
     }
 }
-
-
-
-# databases = {
-#     'default': {
-#         'engine': 'django.db.backends.postgresql_psycopg2',
-#         'name': 'food_time',
-#         'user': 'postgres',
-#         'password': 'foodtime123',
-#         'host': 'localhost',
-#         'database_port': '5432'
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

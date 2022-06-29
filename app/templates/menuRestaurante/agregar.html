@@ -9,7 +9,7 @@
     <div class="flex justify-around py-10">
         <div class="text-center text-5xl font-extrabold leading-none tracking-tight mb-12">
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-900 to-red-700">
-            Agregar Menu
+            Agregar Menú
             </span>
         </div>
     </div>
@@ -29,7 +29,7 @@
                 <input type="number" id="id_valor" name="valor" placeholder="Valor">
                 
                 <select name="categoria" id="id_categorias" class="p-10 m-4  h-18 form-select appearance-none w-96 px-2 py-6  font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 " aria-label=".form-select-sm example">
-                    <option selected disabled>Categoria</option>
+                    <option selected disabled>Categoría</option>
                     {% for c in categorias %}
                     <option value="{{ c.id }}">{{ c.nombre }}</option>
                     {% endfor %}

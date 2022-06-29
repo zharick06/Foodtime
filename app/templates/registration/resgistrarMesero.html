@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro mesero</title>
+    <link rel="shortcut icon" href="{% static 'img/Logos/FoodTimefav.png' %}" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
@@ -22,7 +23,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-mono bg-gray-400">
-    
+    <script>
+        const expresionRegular = {
+            validacion: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/
+        }
+        const password = document.getElementById('id_contraseña')
+        console.log(password);
+        function validacionContraseña() {
+            console.log('ENTROO');
+            if (expresionRegular.validacion.test(password.value)) {
+                password.setAttribute("style", "border-color:green;")
+            }
+            else{
+                password.setAttribute("style", "border-radius: 4rem;")
+            }
+        }
+    </script>
     <!-- Container -->
     <div class="container mx-auto">
         <div class="flex justify-center px-6 my-12">
@@ -40,7 +56,7 @@
                 ></div>
                 <!-- Col -->
                 <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-                    <h3 class="pt-4 text-2xl text-center">Registro Mesero!</h3>
+                    <h3 class="pt-4 text-2xl text-center">¡Registro Mesero!</h3>
                     <form action="" method="POST" enctype="multipart/form-data" class="px-8 pt-6 pb-8 mb-2 bg-white rounded"> {% csrf_token %}
                         <div class="md:flex justify-between">
                             <div class="md:mr-12 md:mb-0">
@@ -121,7 +137,7 @@
                         <div class=" md:flex justify-between">
                             <div class=" md:mr-12 md:mb-0">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="Direccion">
-                                    Direccion
+                                    Dirección
                                 </label>
                                 <input
                                     name="direccion"
@@ -195,6 +211,7 @@
                                     Contraseña
                                 </label>
                                 <input
+                                    onchange="validacionContraseña()"
                                     required
                                     id="id_contraseña"
                                     name="contraseña"
@@ -224,17 +241,7 @@
             </div>
         </div>
     </div>
-    <script>
-        const expresionRegular = {
-            validacion: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/
-        }
-        const password = document.getElementById('id_contraseña')
-        function validacionContraseña() {
-            if (expresionRegular.validacion.test(password.value)) {
-                password.setAttribute("style", "border:green;")
-            }
-        }
-    </script>
+    
 </body>
 </html>
 

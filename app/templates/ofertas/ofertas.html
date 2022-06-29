@@ -68,8 +68,8 @@
             <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Restaurante: {{ o.restaurante | title }}
             </h5>
             <p class="text-gray-700 text-base mb-4">Vacantes: {{ o.vacantes }}</p>
-            <p class="text-gray-700 text-base mb-4">Direccion: {{ o.direccion | capfirst }}</p>
-            <p class="text-gray-700 text-base mb-4">Telefono: {{ o.telefono }}</p>
+            <p class="text-gray-700 text-base mb-4">Dirección: {{ o.direccion | capfirst }}</p>
+            <p class="text-gray-700 text-base mb-4">Teléfono: {{ o.telefono }}</p>
             <p class="text-gray-700 text-base mb-4">Pago: {{ o.pago | intcomma }}</p>
             <button href="#" onclick="eliminarOferta({{ o.id }})" type="button" class=" inline-block px-6 py-2.5 bg-red-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-800 hover:shadow-lg focus:bg-red-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Eliminar</button>
             <button onclick="abrirDetalle('{% url 'detalleOferta' o.id %}')" class=" inline-block px-6 py-2.5 bg-gray-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-gray-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-600 active:shadow-lg transition duration-150 ease-in-out">Ver Detalles</button>
