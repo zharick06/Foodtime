@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/general.css' %}">
+{% load humanize %}
 {% for item in item %}
 <div class="modal-dialog relative w-auto pointer-events-none">
   <div
@@ -13,7 +16,7 @@
 
       <p>{{ item.descripcion }}</p>
       <br>
-      <p>{{ item.valor }}</p>
+      <p>{{ item.valor | intcomma }}</p>
       
     </div>
   </div>
