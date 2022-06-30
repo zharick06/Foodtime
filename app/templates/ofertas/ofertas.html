@@ -63,7 +63,7 @@
     <div class="flex justify-center">
         <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm border-solid border-2">
             <div class="text-center">
-                <img src="{% static 'img/Logos/oferta.png' %}" class="rounded-full w-32 mb-4 mx-auto" alt="Avatar" />
+                <img src="{{ o.restaurante.logo.url }}" class="rounded-full w-32 mb-4 mx-auto" alt="Avatar" />
             </div>
             <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Restaurante: {{ o.restaurante | title }}
             </h5>
