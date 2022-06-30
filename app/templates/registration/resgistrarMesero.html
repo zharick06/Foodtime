@@ -196,14 +196,29 @@
                                     Contraseña
                                 </label>
                                 <input
-                                    onchange="validacionContraseña()"
                                     required
                                     id="id_contraseña"
                                     name="contraseña"
                                     class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     type="password"
                                     placeholder="Contraseña"
+                                    data-bs-toggle="popover" data-bs-content="Minimo 8 caracteres,
+                                    Maximo 15,
+                                    Al menos una letra mayúscula,
+                                    Al menos una letra minucula,
+                                    Al menos un dígito,
+                                    No espacios en blanco,
+                                    Al menos 1 caracter especial"
                                 />
+                                <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+                                <script>
+                                var popoverTriggerList = [].slice.call(
+                                    document.querySelectorAll('[data-bs-toggle="popover"]')
+                                );
+                                var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                                    return new Popover(popoverTriggerEl);
+                                });
+                                </script>
                             </div>
                         </div>
                         <div class="mb-4 md:flex justify-between">
@@ -228,17 +243,19 @@
     </div>
     <script>
         const expresionRegular = {
-            validacion: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/
+            validacion: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/
         }
         const password = document.querySelector('#id_contraseña')
-        console.log(password);
+        const btn = document.querySelector('#id_btn')
+        password.addEventListener('keyup', validacionContraseña);
         function validacionContraseña() {
-            console.log('ENTROO');
             if (expresionRegular.validacion.test(password.value)) {
                 password.setAttribute("style", "border-color:green;")
+                btn.removeAttribute('disabled')
             }
             else{
                 password.setAttribute("style", "border-color:red;")
+                btn.setAttribute('disabled')
             }
         }
     </script>

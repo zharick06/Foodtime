@@ -149,7 +149,23 @@
                                     class="w-60 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     type="password"
                                     placeholder="Contraseña"
+                                    data-bs-toggle="popover" data-bs-content="Minimo 8 caracteres,
+                                    Maximo 15,
+                                    Al menos una letra mayúscula,
+                                    Al menos una letra minucula,
+                                    Al menos un dígito,
+                                    No espacios en blanco,
+                                    Al menos 1 caracter especial"
                                 />
+                                <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+                                <script>
+                                var popoverTriggerList = [].slice.call(
+                                    document.querySelectorAll('[data-bs-toggle="popover"]')
+                                );
+                                var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                                    return new Popover(popoverTriggerEl);
+                                });
+                                </script>
                             </div>
                             <div class="md:ml-2">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="contraseña">
@@ -160,7 +176,7 @@
                                 type="file" name="logo" accept="image/*" id="id_logo" placeholder="Logo">
                             </div>
                         </div>
-                        <button id="id_btn" class="content-center shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                        <button disabled id="id_btn" class="content-center shadow bg-red-900 hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                         Registrar
                         </button>
                     
@@ -169,6 +185,23 @@
             </div>
         </div>
     </div>
-
+    <script>
+        const expresionRegular = {
+            validacion: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/
+        }
+        const password = document.querySelector('#id_contraseña')
+        const btn = document.querySelector('#id_btn')
+        password.addEventListener('keyup', validacionContraseña);
+        function validacionContraseña() {
+            if (expresionRegular.validacion.test(password.value)) {
+                password.setAttribute("style", "border-color:green;")
+                btn.removeAttribute('disabled')
+            }
+            else{
+                password.setAttribute("style", "border-color:red;")
+                btn.setAttribute('disabled')
+            }
+        }
+    </script>
 </body>
 </html>
