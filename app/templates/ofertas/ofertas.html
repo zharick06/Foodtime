@@ -65,7 +65,7 @@
             <div class="text-center">
                 <img src="{{ o.restaurante.logo.url }}" class="rounded-full w-32 mb-4 mx-auto" alt="Avatar" />
             </div>
-            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Restaurante: {{ o.restaurante | title }}
+            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Restaurante: {{ o.restaurante.nombre | title }}
             </h5>
             <p class="text-gray-700 text-base mb-4">Vacantes: {{ o.vacantes }}</p>
             <p class="text-gray-700 text-base mb-4">Dirección: {{ o.direccion | capfirst }}</p>
