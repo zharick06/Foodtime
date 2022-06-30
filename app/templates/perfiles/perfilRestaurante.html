@@ -44,7 +44,11 @@
             </button>
             <div class="collapse" id="cocina">
                 <div class="block p-6 rounded-lg shadow-lg bg-white">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    {% for usuarioCocina in usuarioCocina %}
+                        Usuario: {{ usuarioCocina.usuario }}
+                        <br>
+                        Constraseña:  {{ usuarioCocina.contraseña }}
+                    {% endfor %}
                 </div>
             </div>
             <button class="flex mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#caja" aria-expanded="false" aria-controls="collapseExample">
@@ -58,9 +62,11 @@
             </button>
             <div class="collapse" id="caja">
                 <div class="block p-6 rounded-lg shadow-lg bg-white">
-                  {% for usuarioCocina in usuarioCocina %}
-                        {{ usuarioCocina.usuario }}
-                  {% endfor%}
+                    {% for usuarioCaja in usuarioCaja %}
+                        Usuario: {{ usuarioCaja.usuario }}
+                        <br>
+                        Constraseña:  {{ usuarioCaja.contraseña }}
+                    {% endfor %}
                 </div>
             </div>
         </div>
